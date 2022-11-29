@@ -6,7 +6,21 @@
 <%@ include file="./layout/header.jsp" %>
 
 <div class="col-md-12">
-
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+            <sec:authorize access="isAuthenticated()">
+                Logged in as: <span id="user"><sec:authentication
+                    property="principal.username"/></span>
+                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+                <a href="/login" class="btn btn-success active" role="button">User
+                    Login</a>
+                <a href="/user/signUp" class="btn btn-secondary active" role="button">SignUp</a>
+            </sec:authorize>
+        </div>
+    </div>
     <br>
     <!-- 목록 출력 영역 -->
     <table class="table table-horizontal table-bordered">
@@ -19,11 +33,11 @@
         </tr>
         </thead>
         <tbody id="tbody">
-        <c:forEach var="name" items="${postList}" varStatus="post">
+        <c:forEach var="post" items="${postList}">
             <tr>
                 <td>${post.id}</td>
                 <td><a href="/posts/update/{{id}}">${post.title}</a></td>
-                <td>${post.title}</td>
+                <td>${post.author}</td>
                 <td>${post.modifiedDate}</td>
             </tr>
         </c:forEach>

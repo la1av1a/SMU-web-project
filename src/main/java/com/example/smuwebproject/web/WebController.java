@@ -1,4 +1,4 @@
-package com.example.smuwebproject;
+package com.example.smuwebproject.web;
 
 import com.example.smuwebproject.domain.service.UserService;
 import com.example.smuwebproject.web.dto.UserSignUpRequestDTO;
@@ -16,18 +16,19 @@ public class WebController {
 
     private final UserService userService;
 
-    @GetMapping("/")
-    private String test() {
-        return "index";
+
+    @GetMapping("/user/signUp")
+    private String signUpPage() {
+        return "signUp";
     }
 
-    @PostMapping("/user/signIn")
-    private void postTest(@Valid UserSignUpRequestDTO userSignUpRequestDTO) {
-        log.info("ID : {}", userSignUpRequestDTO.getUserId());
-        log.info("password : {}", userSignUpRequestDTO.getUserPw());
-        log.info("name : {}", userSignUpRequestDTO.getUserName());
+    @PostMapping("/user/signUp")
+    private String postTest(@Valid UserSignUpRequestDTO userSignUpRequestDTO) {
 
+        log.info("확인");
         userService.signUp(userSignUpRequestDTO.toEntity());
+
+        return "redirect:/";
     }
 
     @GetMapping("/success")
@@ -35,7 +36,7 @@ public class WebController {
         return "result";
     }
 
-    @GetMapping("/postSave")
+    @GetMapping("/posts/save")
     private String postSave() {
         return "posts-save";
     }

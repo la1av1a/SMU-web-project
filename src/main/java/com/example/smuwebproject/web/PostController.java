@@ -17,7 +17,7 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("/")
-    private String test(@PageableDefault Pageable pageable,
+    private String test(@PageableDefault() Pageable pageable,
         Model model) {
 
         List<PostListResponseDTO> postList = postService.getPosts(pageable);

@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class PostListResponseDTO {
+public class PostResponseDTO {
 
     private final Long id;
 
@@ -21,7 +21,7 @@ public class PostListResponseDTO {
     private final Date modifiedDate;
 
     @Builder
-    public PostListResponseDTO(Post post) {
+    public PostResponseDTO(Post post) {
         this.id = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();

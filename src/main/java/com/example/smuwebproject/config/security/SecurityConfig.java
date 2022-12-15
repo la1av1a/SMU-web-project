@@ -23,7 +23,7 @@ public class SecurityConfig {
             .passwordParameter("userPw")
             .and()
             .authorizeHttpRequests()
-            .antMatchers("/posts/save").authenticated()
+            .antMatchers("/posts/save", "/posts/update/**").authenticated()
             .anyRequest().permitAll()
             .and()
             .logout()

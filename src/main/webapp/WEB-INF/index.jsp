@@ -36,7 +36,7 @@
         <c:forEach var="post" items="${postList}">
             <tr>
                 <td>${post.id}</td>
-                <td><a href="/posts/update/{{id}}">${post.title}</a></td>
+                <td><a href="/posts/${post.id}">${post.title}</a></td>
                 <td>${post.author}</td>
                 <td>${post.modifiedDate}</td>
             </tr>
